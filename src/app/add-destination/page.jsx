@@ -1,3 +1,4 @@
+"use client";
 import {
   Button,
   FieldError,
@@ -11,8 +12,26 @@ import {
 import React from "react";
 
 const DestinationPage = () => {
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const destination = Object.fromEntries(formData.entries());
+
+    // console.log(destination);
+
+    const res = await fetch("http://localhost:4000/destination", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body:JSON.stringify(destination)
+    });
+
+    const data = await res.json()
+
+    console.log(data);
+    
+  };
   return (
-    <div className="min-h-screen md:mt-20 bg-linear-to-br from-gray-50 to-gray-100 py-12 px-4 md:px-8">
+    <div className="min-h-screen  bg-linear-to-br from-gray-50 to-gray-100 py-12 px-4 md:px-8">
       <div className="max-w-5xl mx-auto bg-white shadow-2xl rounded-3xl overflow-hidden border border-gray-100">
         {/* Header */}
         <div className="bg-linear-to-r from-cyan-500 via-teal-500 to-cyan-600 px-8 md:px-12 py-10 text-white">
@@ -25,7 +44,7 @@ const DestinationPage = () => {
         </div>
 
         {/* Form */}
-        <form className="p-8 md:p-12 space-y-10">
+        <form onSubmit={onSubmit} className="p-8 md:p-12 space-y-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-9">
             {/* Destination Name */}
             <div className="md:col-span-2">
