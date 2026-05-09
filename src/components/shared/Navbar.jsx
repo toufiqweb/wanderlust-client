@@ -15,6 +15,7 @@ export default function Navbar() {
     { name: "Destinations", path: "/destinations" },
     { name: "My Bookings", path: "/bookings" },
     { name: "Admin", path: "/admin" },
+    { name: "Add-Destination", path: "/add-destination" },
   ];
 
   const authLinks = [
