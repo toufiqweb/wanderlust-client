@@ -2,10 +2,10 @@ import { Separator } from "@heroui/react";
 
 const Banner = () => {
   return (
-    <div className="bg-[url('@/assets/Banner.png')] bg-cover bg-center text-white flex justify-between flex-col items-center gap-5 min-h-screen">
-      
+    <section className="relative min-h-screen flex flex-col items-center justify-center text-white">
+      <div className="absolute inset-0 bg-black/10 -z-10" />
+      <div className="absolute inset-0 bg-[url('@/assets/Banner.png')] bg-cover bg-center -z-20" />
       <div className="p-5 sm:p-8 lg:p-10 text-center flex justify-center flex-col items-center gap-3.5 flex-1">
-        
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight">
           Discover Your <br /> Next Adventure
         </h1>
@@ -16,7 +16,6 @@ const Banner = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 w-full sm:w-auto">
-          
           <button className="uppercase bg-cyan-500 px-5 py-3 cursor-pointer w-full sm:w-auto">
             Explore Now
           </button>
@@ -28,7 +27,6 @@ const Banner = () => {
       </div>
 
       <div className="bg-white/30 flex flex-col sm:grid sm:grid-cols-2 lg:flex lg:flex-row justify-between gap-5 w-full items-center p-4 sm:p-5 lg:p-4">
-        
         <div className="px-3 text-center sm:text-left">
           <h3 className="text-sm">Location</h3>
           <p className="text-xs">Address, City or Zip</p>
@@ -71,7 +69,7 @@ const Banner = () => {
           <h3>Search</h3>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
