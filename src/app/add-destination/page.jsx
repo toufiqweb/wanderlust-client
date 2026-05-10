@@ -31,7 +31,7 @@ const DestinationPage = () => {
     
   };
   return (
-    <div className="min-h-screen  bg-linear-to-br from-gray-50 to-gray-100 py-12 px-4 md:px-8">
+    <div className="min-h-screen md:py-25  bg-linear-to-br from-gray-50 to-gray-100  px-4 md:px-8">
       <div className="max-w-5xl mx-auto bg-white shadow-2xl rounded-3xl overflow-hidden border border-gray-100">
         {/* Header */}
         <div className="bg-linear-to-r from-cyan-500 via-teal-500 to-cyan-600 px-8 md:px-12 py-10 text-white">
