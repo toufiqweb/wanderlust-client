@@ -12,6 +12,7 @@ import {
   ArrowLeft,
 } from "lucide-react";
 import Image from "next/image";
+import { EditDestinationModal } from "@/components/ui/EditDestinationModal";
 
 const DestinationDetailsPage = async ({ params }) => {
   const { id } = await params;
@@ -21,7 +22,6 @@ const DestinationDetailsPage = async ({ params }) => {
   const {
     destinationName,
     country,
-    category,
     price,
     duration,
     departureDate,
@@ -41,11 +41,8 @@ const DestinationDetailsPage = async ({ params }) => {
         </Link>
 
         <div className="flex items-center gap-3">
-          <button className="border border-gray-300 px-4 py-2 text-sm flex items-center gap-2 hover:bg-gray-100 transition">
-            <Pencil size={15} />
-            Edit
-          </button>
-
+        
+            <EditDestinationModal destination={destination}/>
           <button className="border border-red-300 text-red-500 px-4 py-2 text-sm flex items-center gap-2 hover:bg-red-50 transition">
             <Trash2 size={15} />
             Cancel
