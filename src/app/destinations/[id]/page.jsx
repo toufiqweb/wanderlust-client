@@ -7,12 +7,11 @@ import {
   Star,
   Check,
   ArrowRight,
-  Pencil,
-  Trash2,
   ArrowLeft,
 } from "lucide-react";
 import Image from "next/image";
 import { EditDestinationModal } from "@/components/ui/EditDestinationModal";
+import { DeleteDestinationAlert } from "@/components/ui/DeleteDestinationAlert";
 
 const DestinationDetailsPage = async ({ params }) => {
   const { id } = await params;
@@ -43,10 +42,8 @@ const DestinationDetailsPage = async ({ params }) => {
         <div className="flex items-center gap-3">
         
             <EditDestinationModal destination={destination}/>
-          <button className="border border-red-300 text-red-500 px-4 py-2 text-sm flex items-center gap-2 hover:bg-red-50 transition">
-            <Trash2 size={15} />
-            Cancel
-          </button>
+            <DeleteDestinationAlert destination={destination}/>
+          
         </div>
       </div>
 
