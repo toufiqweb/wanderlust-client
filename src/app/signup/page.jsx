@@ -3,6 +3,13 @@
 import { FaUser, FaEnvelope, FaLock, FaGoogle } from "react-icons/fa";
 
 const SignupPage = () => {
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const userData = Object.fromEntries(formData.entries());
+
+    console.log(userData);
+  };
   return (
     <div className="min-h-screen px-4 py-16 md:py-24 bg-[#f3f3f5] flex items-center justify-center">
       <div className="w-full max-w-140 bg-white border border-gray-200 shadow-sm p-6 sm:p-8 md:p-10">
@@ -16,7 +23,7 @@ const SignupPage = () => {
           </p>
         </div>
 
-        <form className="space-y-5">
+        <form onSubmit={onSubmit} className="space-y-5">
           <div>
             <label className="block text-[15px] font-semibold text-black mb-2">
               Full Name
@@ -27,6 +34,7 @@ const SignupPage = () => {
 
               <input
                 type="text"
+                name="name"
                 placeholder="Enter your name"
                 className="w-full bg-transparent outline-none text-[15px] placeholder:text-gray-500"
               />
@@ -43,6 +51,7 @@ const SignupPage = () => {
 
               <input
                 type="email"
+                name="email"
                 placeholder="Enter your email"
                 className="w-full bg-transparent outline-none text-[15px] placeholder:text-gray-500"
               />
@@ -59,6 +68,7 @@ const SignupPage = () => {
 
               <input
                 type="password"
+                name="password"
                 placeholder="Create a password"
                 className="w-full bg-transparent outline-none text-[15px] placeholder:text-gray-500"
               />
@@ -75,6 +85,7 @@ const SignupPage = () => {
 
               <input
                 type="password"
+                name="confirmPassword"
                 placeholder="Confirm your password"
                 className="w-full bg-transparent outline-none text-[15px] placeholder:text-gray-500"
               />
