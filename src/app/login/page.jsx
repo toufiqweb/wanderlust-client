@@ -1,6 +1,13 @@
+"use client";
 import { FaEnvelope, FaLock, FaGoogle } from "react-icons/fa";
 
 const LoginPage = () => {
+  const onsubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const userData = Object.fromEntries(formData.entries());
+    console.log(userData);
+  };
   return (
     <div className="min-h-screen px-4 py-16 md:py-24 bg-[#f3f3f5] flex items-center justify-center">
       <div className="w-full max-w-110 bg-white border border-gray-200 shadow-sm p-6 sm:p-8 md:p-10">
@@ -14,7 +21,7 @@ const LoginPage = () => {
           </p>
         </div>
 
-        <form className="space-y-5">
+        <form onSubmit={onsubmit} className="space-y-5">
           <div>
             <label className="block text-[15px] font-semibold text-black mb-2">
               Email Address
@@ -25,6 +32,7 @@ const LoginPage = () => {
 
               <input
                 type="email"
+                name="email"
                 placeholder="Enter your email"
                 className="w-full bg-transparent outline-none text-[15px] placeholder:text-gray-500"
               />
@@ -41,6 +49,7 @@ const LoginPage = () => {
 
               <input
                 type="password"
+                name="password"
                 placeholder="Enter your password"
                 className="w-full bg-transparent outline-none text-[15px] placeholder:text-gray-500"
               />
@@ -66,7 +75,7 @@ const LoginPage = () => {
             type="submit"
             className="w-full h-13.5 bg-[#1aa5c8] hover:bg-[#1595b5] transition-all duration-300 text-white font-medium text-[16px]"
           >
-            Sign In
+            Login In
           </button>
 
           <div className="flex items-center gap-4 py-1">
@@ -89,7 +98,7 @@ const LoginPage = () => {
           </button>
 
           <p className="text-center text-gray-500 text-[15px] pt-2">
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <span className="text-[#1aa5c8] font-semibold cursor-pointer hover:underline">
               Sign Up
             </span>

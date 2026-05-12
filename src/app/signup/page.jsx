@@ -37,7 +37,7 @@ const SignupPage = () => {
               autoClose: 3000,
             });
 
-            router.push("/")
+            router.push("/");
           },
 
           onError: (ctx) => {
