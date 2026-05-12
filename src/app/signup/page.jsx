@@ -67,6 +67,12 @@ const SignupPage = () => {
       // console.error(err);
     }
   };
+
+  const googleSignIn = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+    });
+  };
   return (
     <div className="min-h-screen px-4 py-16 md:py-24 bg-[#f3f3f5] flex items-center justify-center">
       <div className="w-full max-w-140 bg-white border border-gray-200 shadow-sm p-6 sm:p-8 md:p-10">
@@ -167,6 +173,7 @@ const SignupPage = () => {
           </div>
 
           <button
+            onClick={googleSignIn}
             type="button"
             className="w-full h-13.5 border border-gray-200 flex items-center justify-center gap-3 text-black font-medium hover:bg-gray-50 transition-all duration-300"
           >

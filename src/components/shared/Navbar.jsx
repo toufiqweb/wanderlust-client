@@ -7,6 +7,7 @@ import { useState } from "react";
 import { Menu, X, User, LogOut } from "lucide-react";
 import logo from "@/assets/Wanderlast.png";
 import { authClient } from "@/lib/auth-client";
+import { Avatar } from "@heroui/react";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -94,13 +95,23 @@ export default function Navbar() {
                   Profile
                 </Link>
 
-                <button
-                  onClick={handleLogout}
-                  className="flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-red-500 transition cursor-pointer"
-                >
-                  <LogOut size={16} />
-                  Logout
-                </button>
+                <div className="flex items-center gap-2">
+                  <Avatar>
+                    <Avatar.Image
+                    referrerPolicy="no-referer"
+                      alt={session?.user?.name || "User Avatar"}
+                      src={session?.user?.image || "/default-avatar.png"}
+                    />
+                    <Avatar.Fallback>{session?.user?.name[0]}</Avatar.Fallback>
+                  </Avatar>
+                  <button
+                    onClick={handleLogout}
+                    className="flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-red-500 transition cursor-pointer"
+                  >
+                    <LogOut size={16} />
+                    Logout
+                  </button>
+                </div>
               </>
             ) : (
               authLinks.map((link) => {
