@@ -1,14 +1,71 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
+
 import { FaUser, FaEnvelope, FaLock, FaGoogle } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const SignupPage = () => {
-  const onSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const userData = Object.fromEntries(formData.entries());
+  const router = useRouter();
 
-    console.log(userData);
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    const toastId = toast.loading("Creating account...");
+
+    try {
+      const formData = new FormData(e.target);
+      const userData = Object.fromEntries(formData.entries());
+
+      const { name, email, password, image } = userData;
+
+      const { data, error } = await authClient.signUp.email(
+        {
+          email,
+          password,
+          name,
+          image,
+          callbackURL: "/dashboard",
+        },
+        {
+          onSuccess: () => {
+            toast.update(toastId, {
+              render: "Account created successfully 🎉",
+              type: "success",
+              isLoading: false,
+              autoClose: 3000,
+            });
+
+            router.push("/")
+          },
+
+          onError: (ctx) => {
+            toast.update(toastId, {
+              render: ctx.error.message || "Something went wrong",
+              type: "error",
+              isLoading: false,
+              autoClose: 3000,
+            });
+          },
+        },
+      );
+
+      if (error) {
+        throw error;
+      }
+
+      console.log(data);
+    } catch (err) {
+      toast.update(toastId, {
+        render: err.message || "Signup failed",
+        type: "error",
+        isLoading: false,
+        autoClose: 3000,
+      });
+
+      // console.error(err);
+    }
   };
   return (
     <div className="min-h-screen px-4 py-16 md:py-24 bg-[#f3f3f5] flex items-center justify-center">
@@ -77,16 +134,16 @@ const SignupPage = () => {
 
           <div>
             <label className="block text-[15px] font-semibold text-black mb-2">
-              Confirm Password
+              Image URL
             </label>
 
             <div className="flex items-center h-13.5 border border-gray-200 bg-[#f7f7f7] px-4">
               <FaLock className="text-gray-500 text-sm mr-3" />
 
               <input
-                type="password"
-                name="confirmPassword"
-                placeholder="Confirm your password"
+                type="url"
+                name="image"
+                placeholder="Enter image url !"
                 className="w-full bg-transparent outline-none text-[15px] placeholder:text-gray-500"
               />
             </div>
