@@ -30,6 +30,7 @@ const BookingCard = ({ destination }) => {
         imageUrl,
         destinationDate: new Date(destinationDate),
         price,
+        status: "Confirmed",
       }),
     }).then(async (res) => {
       const data = await res.json();
