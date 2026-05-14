@@ -6,12 +6,13 @@ import {
   MapPin,
   Star,
   Check,
-  ArrowRight,
+
   ArrowLeft,
 } from "lucide-react";
 import Image from "next/image";
 import { EditDestinationModal } from "@/components/ui/EditDestinationModal";
 import { DeleteDestinationAlert } from "@/components/ui/DeleteDestinationAlert";
+import BookingCard from "@/components/ui/BookingCard";
 
 const DestinationDetailsPage = async ({ params }) => {
   const { id } = await params;
@@ -21,7 +22,6 @@ const DestinationDetailsPage = async ({ params }) => {
   const {
     destinationName,
     country,
-    price,
     duration,
     departureDate,
     imageUrl,
@@ -40,10 +40,8 @@ const DestinationDetailsPage = async ({ params }) => {
         </Link>
 
         <div className="flex items-center gap-3">
-        
-            <EditDestinationModal destination={destination}/>
-            <DeleteDestinationAlert destination={destination}/>
-          
+          <EditDestinationModal destination={destination} />
+          <DeleteDestinationAlert destination={destination} />
         </div>
       </div>
 
@@ -139,43 +137,7 @@ const DestinationDetailsPage = async ({ params }) => {
           </div>
         </div>
 
-        <div className="w-full">
-          <div className="bg-white border border-gray-200 shadow-sm p-5 sticky top-24">
-            <div className="mb-6">
-              <p className="text-sm text-gray-500 mb-1">Starting from</p>
-
-              <h2 className="text-4xl font-semibold text-cyan-500">${price}</h2>
-
-              <p className="text-sm text-gray-400 mt-1">per person</p>
-            </div>
-
-            <div className="border border-gray-200 px-4 py-3 text-gray-500 text-sm mb-6">
-              {departureDate}
-            </div>
-
-            <button className="w-full bg-cyan-500 hover:bg-cyan-600 transition text-white py-4 flex items-center justify-center gap-2 text-sm font-medium">
-              Book Now
-              <ArrowRight size={16} />
-            </button>
-
-            <div className="mt-6 space-y-3">
-              <div className="flex items-start gap-3 text-sm text-gray-500">
-                <Check size={16} className="text-green-500 mt-0.5" />
-                <span>Free cancellation up to 7 days</span>
-              </div>
-
-              <div className="flex items-start gap-3 text-sm text-gray-500">
-                <Check size={16} className="text-green-500 mt-0.5" />
-                <span>Travel insurance included</span>
-              </div>
-
-              <div className="flex items-start gap-3 text-sm text-gray-500">
-                <Check size={16} className="text-green-500 mt-0.5" />
-                <span>24 / 7 customer support</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <BookingCard destination={destination} />
       </div>
     </div>
   );
