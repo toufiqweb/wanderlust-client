@@ -1,3 +1,4 @@
+import { DeleteBookingAlert } from "@/components/ui/DeleteBookingAlert";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import Image from "next/image";
@@ -103,11 +104,8 @@ const MyBookings = async () => {
 
             {/* Right Actions */}
             <div className="flex md:flex-col gap-3 mt-4 md:mt-0">
-              <button className="inline-flex items-center gap-2 px-4 py-2 text-sm border border-red-400 text-red-500 rounded-md hover:bg-red-50 transition">
-                <FaBan />
-                Cancel
-              </button>
-              <button className="inline-flex items-center gap-2 px-4 py-2 text-sm bg-cyan-500 text-white rounded-md hover:bg-cyan-600 transition">
+              <DeleteBookingAlert bookingId={booking._id} />
+              <button className="inline-flex items-center gap-2 px-4 py-2 text-sm bg-cyan-500 text-white  hover:bg-cyan-600 transition">
                 <FaEye />
                 View
               </button>
