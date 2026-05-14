@@ -22,17 +22,16 @@ const DestinationPage = () => {
     const res = await fetch("http://localhost:4000/destination", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body:JSON.stringify(destination)
+      body: JSON.stringify(destination),
     });
 
-    const data = await res.json()
+    const data = await res.json();
 
     console.log(data);
-    
   };
   return (
     <div className="min-h-screen md:py-25  bg-linear-to-br from-gray-50 to-gray-100  px-4 md:px-8">
-      <div className="max-w-5xl mx-auto bg-white shadow-2xl rounded-3xl overflow-hidden border border-gray-100">
+      <div className="max-w-5xl mx-auto bg-white shadow-sm  overflow-hidden border border-gray-100">
         {/* Header */}
         <div className="bg-linear-to-r from-cyan-500 via-teal-500 to-cyan-600 px-8 md:px-12 py-10 text-white">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
@@ -54,7 +53,7 @@ const DestinationPage = () => {
                 </Label>
                 <Input
                   placeholder="Bali Paradise Retreat"
-                  className="rounded-2xl py-6 text-base"
+                  className=" py-6 px-5 text-base rounded-none shadow-none border border-gray-200"
                 />
                 <FieldError />
               </TextField>
@@ -67,7 +66,7 @@ const DestinationPage = () => {
               </Label>
               <Input
                 placeholder="Indonesia"
-                className="rounded-2xl py-6 text-base"
+                className=" py-6 px-5 text-base rounded-none shadow-none border border-gray-200"
               />
               <FieldError />
             </TextField>
@@ -78,37 +77,61 @@ const DestinationPage = () => {
               <Select
                 name="category"
                 isRequired
-                className="w-full"
+                className="w-full "
                 placeholder="Select category"
               >
                 <Label>Category</Label>
-                <Select.Trigger className="rounded-2xl">
+                <Select.Trigger className=" py-6 px-5 text-base rounded-none shadow-none border border-gray-200">
                   <Select.Value />
                   <Select.Indicator />
                 </Select.Trigger>
-                <Select.Popover>
+                <Select.Popover className=" py-2 text-base rounded-none shadow-none border border-gray-200">
                   <ListBox>
-                    <ListBox.Item id="Beach" textValue="Beach">
+                    <ListBox.Item
+                      id="Beach"
+                      textValue="Beach"
+                      className="rounded-none shadow-none"
+                    >
                       Beach
                       <ListBox.ItemIndicator />
                     </ListBox.Item>
-                    <ListBox.Item id="Mountain" textValue="Mountain">
+                    <ListBox.Item
+                      id="Mountain"
+                      textValue="Mountain"
+                      className="rounded-none shadow-none"
+                    >
                       Mountain
                       <ListBox.ItemIndicator />
                     </ListBox.Item>
-                    <ListBox.Item id="City" textValue="City">
+                    <ListBox.Item
+                      id="City"
+                      textValue="City"
+                      className="rounded-none shadow-none"
+                    >
                       City
                       <ListBox.ItemIndicator />
                     </ListBox.Item>
-                    <ListBox.Item id="Adventure" textValue="Adventure">
+                    <ListBox.Item
+                      id="Adventure"
+                      textValue="Adventure"
+                      className="rounded-none shadow-none"
+                    >
                       Adventure
                       <ListBox.ItemIndicator />
                     </ListBox.Item>
-                    <ListBox.Item id="Cultural" textValue="Cultural">
+                    <ListBox.Item
+                      id="Cultural"
+                      textValue="Cultural"
+                      className="rounded-none shadow-none"
+                    >
                       Cultural
                       <ListBox.ItemIndicator />
                     </ListBox.Item>
-                    <ListBox.Item id="Luxury" textValue="Luxury">
+                    <ListBox.Item
+                      id="Luxury"
+                      textValue="Luxury"
+                      className="rounded-none shadow-none"
+                    >
                       Luxury
                       <ListBox.ItemIndicator />
                     </ListBox.Item>
@@ -125,7 +148,7 @@ const DestinationPage = () => {
               <Input
                 type="number"
                 placeholder="1299"
-                className="rounded-2xl py-6 text-base"
+                className=" py-6 px-5 text-base rounded-none shadow-none border border-gray-200"
               />
               <FieldError />
             </TextField>
@@ -137,7 +160,7 @@ const DestinationPage = () => {
               </Label>
               <Input
                 placeholder="7 Days / 6 Nights"
-                className="rounded-2xl py-6 text-base"
+                className=" py-6 px-5 text-base rounded-none shadow-none border border-gray-200"
               />
               <FieldError />
             </TextField>
@@ -147,7 +170,10 @@ const DestinationPage = () => {
               <Label className="mb-2 text-base font-semibold text-gray-700">
                 Departure Date
               </Label>
-              <Input type="date" className="rounded-2xl py-6 text-base" />
+              <Input
+                type="date"
+                className=" py-6 px-5 text-base rounded-none shadow-none border border-gray-200"
+              />
               <FieldError />
             </TextField>
 
@@ -160,7 +186,7 @@ const DestinationPage = () => {
                 <Input
                   type="url"
                   placeholder="https://example.com/bali-paradise.jpg"
-                  className="rounded-2xl py-6 text-base"
+                  className=" py-6 px-5 text-base rounded-none shadow-none border border-gray-200"
                 />
                 <FieldError />
               </TextField>
@@ -174,7 +200,7 @@ const DestinationPage = () => {
                 </Label>
                 <TextArea
                   placeholder="Describe the travel experience, highlights, itinerary, and unique features..."
-                  className="rounded-3xl py-5 text-base"
+                  className=" py-6 px-5 text-base rounded-none shadow-none border border-gray-200"
                   minRows={7}
                 />
                 <FieldError />
@@ -185,8 +211,8 @@ const DestinationPage = () => {
           {/* Submit Button */}
           <Button
             type="submit"
-            className="w-full bg-gradient-to-r from-cyan-500 to-teal-600 hover:from-cyan-600 hover:to-teal-700 
-                       text-white py-7 text-xl font-semibold rounded-2xl shadow-lg 
+            className="w-full bg-linear-to-r from-cyan-500 to-teal-600 hover:from-cyan-600 hover:to-teal-700 
+                       text-white py-7 text-xl font-semibold rounded-none shadow-none  
                        transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
           >
             Add Travel Package

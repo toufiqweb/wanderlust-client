@@ -127,6 +127,9 @@ const DestinationDetailsPage = async ({ params }) => {
                 </span>
               </div>
 
+              <div>
+                
+              </div>
               <div className="flex items-start gap-3">
                 <Check size={18} className="text-green-500 mt-0.5" />
                 <span className="text-gray-600 text-sm">
