@@ -13,11 +13,17 @@ import Image from "next/image";
 import { EditDestinationModal } from "@/components/ui/EditDestinationModal";
 import { DeleteDestinationAlert } from "@/components/ui/DeleteDestinationAlert";
 import BookingCard from "@/components/ui/BookingCard";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 const DestinationDetailsPage = async ({ params }) => {
   const { id } = await params;
+  const {token} = await auth.api.getToken({
+    headers: await headers(),
+  })
+// console.log(token);
 
-  const destination = await getDestinationById(id);
+  const destination = await getDestinationById(id , token);
 
   const {
     destinationName,
@@ -32,7 +38,7 @@ const DestinationDetailsPage = async ({ params }) => {
     <div className="min-h-screen container mx-auto md:py-25  px-4 md:px-8 lg:px-12  ">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
         <Link
-          href="/destinations"
+          href="/destination"
           className="flex items-center gap-2 text-sm text-gray-600 hover:text-black transition"
         >
           <ArrowLeft size={16} />

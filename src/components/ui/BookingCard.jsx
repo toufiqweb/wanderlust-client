@@ -16,10 +16,17 @@ const BookingCard = ({ destination }) => {
   //   console.log(new Date(destinationDate) , "destination date in booking card");
 
   const handleBooking = async () => {
+
+
+    const {data : tokenData} = await authClient.token()
+    console.log(tokenData);
+    
+
     const bookingPromise = fetch("http://localhost:4000/booking", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        authorization : `Bearer ${tokenData?.token}`
       },
       body: JSON.stringify({
         userId: user?.id,

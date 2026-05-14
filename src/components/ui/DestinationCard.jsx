@@ -64,7 +64,7 @@ const DestinationCard = ({ destination }) => {
         <div className="flex items-end justify-between">
           <div></div>
         </div>
-        <Link href={`destinations/${_id}`}>
+        <Link href={`destination/${_id}`}>
           <span className="text-cyan-500 underline  mt-2 text-xl flex items-center gap-1 ">
             See detail <MdOutlineArrowOutward />
           </span>

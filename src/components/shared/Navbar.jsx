@@ -15,7 +15,7 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "Destinations", path: "/destinations" },
+    { name: "Destinations", path: "/destination" },
     { name: "My Bookings", path: "/my-bookings" },
     { name: "Admin", path: "/admin" },
     { name: "Add-Destination", path: "/add-destination" },
@@ -29,6 +29,7 @@ export default function Navbar() {
   // Session
   const { data: session, isPending } = authClient.useSession();
 
+  // console.log(session , "session in navbar");
   // Logout Function
   const handleLogout = async () => {
     await authClient.signOut();

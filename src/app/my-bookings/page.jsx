@@ -1,5 +1,6 @@
 import { DeleteBookingAlert } from "@/components/ui/DeleteBookingAlert";
 import { auth } from "@/lib/auth";
+import { getUserBookings } from "@/lib/data";
 import { headers } from "next/headers";
 import Image from "next/image";
 import {
@@ -24,12 +25,8 @@ const MyBookings = async () => {
       </div>
     );
   }
-
-  const res = await fetch(`http://localhost:4000/booking/${user.id}`, {
-    cache: "no-store",
-  });
-  const bookings = await res.json();
-
+  const bookings = await getUserBookings(user.id);
+  
   return (
     <div className="max-w-7xl mx-auto px-4 py-16 md:py-24">
       {/* Header */}

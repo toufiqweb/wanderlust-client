@@ -5,30 +5,30 @@ import { FaBan } from "react-icons/fa";
 import { toast } from "react-toastify";
 
 export function DeleteBookingAlert({ bookingId }) {
+  const handleDelete = async () => {
+    const res = await fetch(`http://localhost:4000/booking/${bookingId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-    const handleDelete = async () => {
+    const data = await res.json();
 
-        const res = await fetch(`http://localhost:4000/booking/${bookingId}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-
-        const data = await res.json();
-
-        if (res.ok) {
-            toast.success("Booking deleted successfully!");
-            window.location.reload();
-        }else{
-            toast.error("Failed to delete booking.");
-        }
-
+    if (res.ok) {
+      toast.success("Booking deleted successfully!");
+      window.location.reload();
+    } else {
+      toast.error("Failed to delete booking.");
     }
+  };
 
   return (
     <AlertDialog>
-      <Button variant="outline" className="inline-flex rounded-none items-center gap-2 px-4 py-2 text-sm border border-red-400 text-red-500  hover:bg-red-50 transition">
+      <Button
+        variant="outline"
+        className="inline-flex rounded-none items-center gap-2 px-4 py-2 text-sm border border-red-400 text-red-500  hover:bg-red-50 transition"
+      >
         <FaBan />
         Cancel
       </Button>
