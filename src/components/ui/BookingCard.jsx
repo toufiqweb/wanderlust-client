@@ -19,7 +19,7 @@ const BookingCard = ({ destination }) => {
 
 
     const {data : tokenData} = await authClient.token()
-    console.log(tokenData);
+    // console.log(tokenData);
     
 
     const bookingPromise = fetch("http://localhost:4000/booking", {
