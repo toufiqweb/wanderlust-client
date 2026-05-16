@@ -1,10 +1,10 @@
 export const getAllDestinations = async () => {
-  const res = await fetch(`${process.env.NEXT_SERVER_PUBLIC_URL}/destination`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination`);
   return res.json();
    
 };
 export const getDestinationById = async (id , token) => {
-  const res = await fetch(`${process.env.NEXT_SERVER_PUBLIC_URL}/destination/${id}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${id}`, {
     headers: {
       authorization: `Bearer ${token}`,
     }
@@ -15,7 +15,7 @@ export const getDestinationById = async (id , token) => {
 
 
 export const getUserBookings = async (userId) => {
-  const res = await fetch(`${process.env.NEXT_SERVER_PUBLIC_URL}/booking/${userId}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking/${userId}`, {
     cache: "no-store",
   });
   const bookings = await res.json();

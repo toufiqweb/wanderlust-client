@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 export function DeleteBookingAlert({ bookingId }) {
   const handleDelete = async () => {
     const { data: tokenData } = await authClient.token();
-    const res = await fetch(`${process.env.NEXT_SERVER_PUBLIC_URL}/booking/${bookingId}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking/${bookingId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
