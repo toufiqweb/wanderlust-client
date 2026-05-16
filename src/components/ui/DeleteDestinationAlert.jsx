@@ -8,7 +8,7 @@ export function DeleteDestinationAlert({ destination }) {
   const { _id, destinationName } = destination;
 
   const handleDelete = async () => {
-    const res = await fetch(`http://localhost:4000/destination/${_id}`, {
+    const res = await fetch(`${process.env.NEXT_SERVER_PUBLIC_URL}/destination/${_id}`, {
       method: "DELETE",
       headers: { "content-type": "application/json" },
     });

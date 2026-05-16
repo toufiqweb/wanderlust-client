@@ -22,7 +22,7 @@ const BookingCard = ({ destination }) => {
     // console.log(tokenData);
     
 
-    const bookingPromise = fetch("http://localhost:4000/booking", {
+    const bookingPromise = fetch(`${process.env.NEXT_SERVER_PUBLIC_URL}/booking`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
