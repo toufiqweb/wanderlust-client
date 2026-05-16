@@ -1,5 +1,3 @@
-// app/components/WhyChooseWanderlust.jsx
-
 import {
   ShieldCheck,
   Map,

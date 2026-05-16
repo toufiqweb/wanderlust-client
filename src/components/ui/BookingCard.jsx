@@ -11,7 +11,7 @@ const BookingCard = ({ destination }) => {
   const user = session?.user;
   const { price, destinationName, _id, imageUrl } = destination;
 
-  //   console.log(destination);
+    console.log(destination);
 
   //   console.log(new Date(destinationDate) , "destination date in booking card");
 

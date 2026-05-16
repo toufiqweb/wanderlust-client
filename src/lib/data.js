@@ -3,6 +3,7 @@ export const getAllDestinations = async () => {
   return res.json();
    
 };
+
 export const getDestinationById = async (id , token) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${id}`, {
     headers: {
